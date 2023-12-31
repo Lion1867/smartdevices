@@ -2,7 +2,7 @@
 
 ## Клонирование проекта
 
-    git clone git@github.com:Lion1867/smartdevices.git
+    git clone https://github.com/Lion1867/smartdevices.git
     cd smartdevices
 
 ## Деплой проекта
