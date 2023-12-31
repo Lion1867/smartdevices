@@ -8,7 +8,7 @@
 ## Деплой проекта
 
     deploy.bat
-fghdr
+
 ## Запуск сервера разработки
 
     cd backend/mysmartdevices
