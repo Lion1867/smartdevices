@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'market',
     'drf_yasg',
-    'channels'
+    'channels',
+    'easy_thumbnails',
+    'image_cropping'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,6 @@ REST_FRAMEWORK = {
     #'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'PAGE_SIZE': 10
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'

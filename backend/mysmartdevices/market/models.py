@@ -2,6 +2,11 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
+from django.utils.safestring import mark_safe
+
+from image_cropping.fields import ImageRatioField, ImageCropField
+from easy_thumbnails.files import get_thumbnailer
+
 class Provider(User):
     name = models.CharField(max_length=250, default='')
     phone = models.CharField(max_length=250, default='')
@@ -29,9 +34,24 @@ class Consumer(User):
 
 class Category(models.Model):
     name = models.CharField(max_length=250, default='')
+    image = ImageCropField(upload_to='category', null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    cropping = ImageRatioField('image', '200x200')
+
+    @property
+    def image_tag(self):
+        return mark_safe('<img src="%s" />' % self.image.url)
+
+    @property
+    def get_small_image(self):
+        return mark_safe('<img src="%s" />' % get_thumbnailer(self.image).get_thumbnail({
+            'size': (200, 200),
+            'box': self.cropping,
+            'crop': 'smart',
+        }).url)
 
     class Meta:
         verbose_name = 'Category'
@@ -39,15 +59,29 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=250, default='')
-    image = models.ImageField(upload_to='product', null=True, blank=True)
+    image = ImageCropField(upload_to='product', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return '%s (%s)' % (self.name, self.category)
 
+    cropping = ImageRatioField('image', '200x200')
+
+    @property
+    def image_tag(self):
+        return mark_safe('<img src="%s" />' % self.image.url)
+
+    @property
+    def get_small_image(self):
+        return mark_safe('<img src="%s" />' % get_thumbnailer(self.image).get_thumbnail({
+            'size': (200, 200),
+            'box': self.cropping,
+            'crop': 'smart',
+        }).url)
+
     class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
+            verbose_name = 'Product'
+            verbose_name_plural = 'Products'
 
 class Store(models.Model):
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True, blank=True)

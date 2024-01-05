@@ -13,12 +13,12 @@ class ConsumerAdmin(admin.ModelAdmin):
 admin.site.register(Consumer, ConsumerAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'get_small_image']
 
 admin.site.register(Category, CategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'category', 'get_small_image']
 
 admin.site.register(Product, ProductAdmin)
 
