@@ -12,8 +12,32 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
             </ul>
         </div>
         
-        <a  class="up" href="#"><img src="/assets/images/up.jpg" alt="up"></a> 
+        <a class="up" href="#"><img src="/assets/images/up.jpg" alt="up"></a> 
 
-
-{{ products | json}}
+       <div class="container">
+  <table>
+    <tbody>
+      <ng-container *ngFor="let product of products; let i = index">
+        <tr *ngIf="i % 4 === 0">
+          <td>
+            <h2>{{ products[i].name }}</h2>
+            <img [src]="products[i].get_small_image_url" [alt]="products[i].name">
+          </td>
+          <td *ngIf="i + 1 < products.length">
+            <h2>{{ products[i + 1].name }}</h2>
+            <img [src]="products[i + 1].get_small_image_url" [alt]="products[i + 1].name">
+          </td>
+          <td *ngIf="i + 2 < products.length">
+            <h2>{{ products[i + 2].name }}</h2>
+            <img [src]="products[i + 2].get_small_image_url" [alt]="products[i + 2].name">
+          </td>
+          <td *ngIf="i + 3 < products.length">
+            <h2>{{ products[i + 3].name }}</h2>
+            <img [src]="products[i + 3].get_small_image_url" [alt]="products[i + 3].name">
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
 
