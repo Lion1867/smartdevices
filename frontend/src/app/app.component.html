@@ -1,6 +1,6 @@
 
-    <div class="menu" style="grid-column: 1/3; position: fixed; z-index: 1; color: black;
-background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #1d55a6;  left: 0; right: 0;">
+    <div class="menu" style="grid-column: 1/3; position: fixed; z-index: 1; color: black; 
+background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #1d55a6; top:0;  left: 0; right: 0;">
             <ul class="headerr" style="display: flex; flex-direction: row; text-align: space-between; align-items: center; justify-content: space-between; ">
                 <li class="logo-container"><img id="logo_adapt" src="/assets/images/logo_new.png" alt="Logo"></li> 
                 <b class="menu-items"><li> <a class="v3" style="font-size: 1.1vw; font-family: 'Gotham Pro';" href="#">ГЛАВНАЯ</a></li>
@@ -14,7 +14,20 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
         
         <a class="up" href="#"><img src="/assets/images/up.jpg" alt="up"></a> 
 
-       <div class="container">
+
+
+<form style="margin-top: 155px;  ">
+  <div style="display: flex; flex-direction: row;">
+    <button class="searchButton" style="display: flex; flex-direction:column; text-align: center; align-items: center; justify-content: center; height: 42px; width: 15%;
+      font-family: 'Gotham Pro';
+    color: #fff; 
+    border: none; padding-left: 20px; padding-right: 20px;
+    border-radius: 5px; " (click)="doFind()">Поиск</button>
+   <input name="name" [(ngModel)] = "name" placeholder="Название товара" style="padding-right: 500px;" required/>
+  </div>
+  </form>
+
+  <div class="container">
   <table>
     <tbody>
       <ng-container *ngFor="let product of products; let i = index">
