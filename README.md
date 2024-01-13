@@ -14,12 +14,12 @@
 
     .\deploy.bat
 
-## Запуск сервера разработки
+## Запуск сервера разработки Django
 
     cd backend/mysmartdevices
     bin/run.bat
 
-## Запуск сервера Angular
+## Запуск сервера разработки Angular
     
     Откройте папку frontend в редакторе кода Visual Studio, создайте новый терминал и введите команду 
     bin/run.bat
