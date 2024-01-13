@@ -8,7 +8,7 @@ from market.models import Category
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'get_small_image_url']
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """

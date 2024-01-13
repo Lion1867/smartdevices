@@ -41,16 +41,24 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    cropping = ImageRatioField('image', '200x200')
+    cropping = ImageRatioField('image', '40x40')
 
     @property
     def image_tag(self):
         return mark_safe('<img src="%s" />' % self.image.url)
 
     @property
+    def get_small_image_url(self):
+        return BASE_URL + get_thumbnailer(self.image).get_thumbnail({
+            'size': (40, 40),
+            'box': self.cropping,
+            'crop': 'smart',
+        }).url
+
+    @property
     def get_small_image(self):
         return mark_safe('<img src="%s" />' % get_thumbnailer(self.image).get_thumbnail({
-            'size': (200, 200),
+            'size': (40, 40),
             'box': self.cropping,
             'crop': 'smart',
         }).url)

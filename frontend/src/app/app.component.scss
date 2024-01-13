@@ -13,6 +13,19 @@
   
   td {
     text-align: center; 
-    vertical-align: middle; 
+    vertical-align: bottom; 
     padding: 10px; 
   }
+
+  #finder::placeholder {
+    color: rgba(78, 75, 75, 0.7);
+    }
+    .container h2 {font-size: 22px; }
+    .container h3 {font-size: 14px; color: rgba(27, 26, 26, 0.7);}
+
+    .clickButton:hover {background-color: #f8af5b;}
+    .clickButton {background-color: #1d55a6; cursor: pointer;   display: flex; flex-direction:column; text-align: center; align-items: center; justify-content: center; height: 42px; width: 15%;
+      font-family: 'Gotham Pro';
+    color: #fff; 
+    border: none; padding-left: 20px; padding-right: 20px;
+    border-radius: 5px; margin: 8px; width:70%; height: 25px;}

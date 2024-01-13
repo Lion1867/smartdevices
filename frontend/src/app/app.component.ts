@@ -6,10 +6,16 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+
+interface Category {
+  name: string;
+  get_small_image_url: string;
+}
+
 interface Product {
   id: number;
   name: string;
-  category: number;
+  category: Category;
   get_small_image_url: string;
 }
 
@@ -28,7 +34,7 @@ export class AppComponent {
   name = ''; 
 
   constructor(private http: HttpClient) {
-    this.http.get('http://127.0.0.1:8989/v1/generic/product_list?limit=73').subscribe((data: any) => {
+    this.http.get('http://127.0.0.1:8989/v1/generic/product_list?limit=68').subscribe((data: any) => {
       console.log(data);
       this.products = data.results;
     });
@@ -37,7 +43,7 @@ export class AppComponent {
   doFind() {
     console.log(this.name);
     
-    this.http.get(`http://127.0.0.1:8989/v1/generic/product_list?limit=73&searchkey=${this.name}`).subscribe((data: any) => {
+    this.http.get(`http://127.0.0.1:8989/v1/generic/product_list?limit=68&searchkey=${this.name}`).subscribe((data: any) => {
       console.log(data);
       this.products = data.results;
     });
