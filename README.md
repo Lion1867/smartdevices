@@ -18,3 +18,8 @@
 
     cd backend/mysmartdevices
     bin/run.bat
+
+## Запуск сервера Angular
+    
+    Откройте папку frontend в редакторе кода Visual Studio, создайте новый терминал и введите команду 
+    bin/run.bat
