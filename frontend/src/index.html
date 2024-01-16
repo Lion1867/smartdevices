@@ -9,6 +9,7 @@
     <link type="image/x-icon" rel="shortcut icon" href="/assets/images/Главная.jpg">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>ИИ BUSINESS TECH | Создаём и внедряем искусственный интеллект в технологические решения бизнеса и предприятий</title>
     <style>
       
@@ -236,6 +237,8 @@ text-decoration: none; color: rgb(255, 255, 255); background-color: #1d55a6; tra
 .popup-overlay.active {
   display: flex;
 }
+
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -266,6 +269,54 @@ text-decoration: none; color: rgb(255, 255, 255); background-color: #1d55a6; tra
             });
         });
     });
+
+    let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const slideInterval = 3000;
+
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+
+function changeSlide(direction) {
+  slides[currentIndex].style.opacity = 0;
+  if (direction === 'right') {
+    currentIndex = (currentIndex + 1) % slides.length;
+  } else if (direction === 'left') {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  }
+  slides[currentIndex].style.opacity = 1;
+}
+
+setInterval(() => changeSlide('right'), slideInterval);
+
+leftArrow.addEventListener('click', () => changeSlide('left'));
+rightArrow.addEventListener('click', () => changeSlide('right'));
+
+
+document.addEventListener('DOMContentLoaded', function () {
+        var searchButton = document.querySelector('#searchButton');
+        searchButton.addEventListener('click', function() {
+            scrollToProductsGrid();
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var searchButton = document.querySelector('#searchMenuButton');
+        searchButton.addEventListener('click', function() {
+            scrollToProductsGrid();
+        });
+    });
+
+    function scrollToProductsGrid() {
+        var productsGrid = document.querySelector('.products-grid');
+        if (productsGrid) {
+            const yOffset = -247; 
+            const y = productsGrid.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }
+    }
+
   </script>
 </body>
 </html>

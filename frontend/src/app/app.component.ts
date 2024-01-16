@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 interface Category {
   id : number;
@@ -19,12 +20,13 @@ interface Product {
   name: string;
   category: Category;
   get_small_image_url: string;
+  isHovering?: boolean;
 }
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, MatMenuModule, MatButtonModule],
+  imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, MatMenuModule, MatButtonModule, MatIconModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -44,7 +46,7 @@ export class AppComponent {
   constructor(private http: HttpClient) {
     this.http.get('http://127.0.0.1:8989/v1/generic/product_list?limit=68').subscribe((data: any) => {
       console.log(data);
-      this.products = data.results;
+      this.products = data.results.map((productItem: Product) => ({ ...productItem, isHovering: false }));
     });
 
     this.getCategoryList().subscribe((res: any) => {
@@ -57,7 +59,7 @@ export class AppComponent {
     
     this.http.get(`http://127.0.0.1:8989/v1/generic/product_list?limit=68&searchkey=${this.name}`).subscribe((data: any) => {
       console.log(data);
-      this.products = data.results;
+      this.products = data.results.map((productItem: Product) => ({ ...productItem, isHovering: false }));
     });
 
   }
@@ -67,9 +69,15 @@ export class AppComponent {
     
     this.http.get(`http://127.0.0.1:8989/v1/generic/product_list?limit=68&category=${categoryId}`).subscribe((data: any) => {
       console.log(data);
-      this.products = data.results;
+      
+      this.products = data.results.map((productItem: Product) => ({ ...productItem, isHovering: false }));
+  
     });
 
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }
