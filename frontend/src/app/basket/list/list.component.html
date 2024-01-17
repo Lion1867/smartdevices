@@ -1,1 +1,28 @@
+<div style="padding-top: 500px;">
+{{ basket | json }}
+</div>
 
+<!--<div class="products-grid" style="margin-top: 40px; font-family: 'Gotham Pro'; margin-left: 20px; margin-right: 20px;">
+    <ng-container *ngFor="let product of basket">
+      <div class="product-card">
+       
+        <h2 style="margin-left: 10px;">{{ product.name }}</h2>
+       
+
+
+        <div class="product-info">
+          <img class="product-image" [src]="product.category.get_small_image_url" [alt]="product.category.name">
+          <h3>{{ product.category.name }}</h3>
+        </div>
+        <img [src]="product.get_small_image_url" [alt]="product.name">
+        <div class="button-group">
+          <button (click)="doAddToBasket(product.id)" class="clickButton" type="button">КУПИТЬ</button>
+          <button (mouseenter)="product.isHovering = true" 
+          (mouseleave)="product.isHovering = false" style="background-color: transparent !important; border: none;
+       box-shadow: none !important; margin-left: 307px; margin-top: 11px; position: absolute; font-family: 'Gotham Pro';" [style.color]="product.isHovering ? '#f8af5b' : '#1d55a6'">
+          <mat-icon style="font-size: 19px;">{{ product.isHovering ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>-->

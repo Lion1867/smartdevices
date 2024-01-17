@@ -22,12 +22,32 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
                   <mat-icon style="font-size: 25px;">favorite</mat-icon>
                   <b>ИЗБРАННОЕ</b>
                 </button>
-                  <button class="but_1" [routerLink]="'basket'" style=" background-color: transparent !important; border: none;
-                  box-shadow: none !important; font-family: 'Gotham Pro';">
-                    <mat-icon style="font-size: 26px;">shopping_cart</mat-icon>
-                    <b>КОРЗИНА</b>
-                  </button>
+
+                
                   
+                  <button *ngIf="basket.length >= 0" class="but_1" [routerLink]="'basket'" style="position: relative; background-color: transparent !important; border: none;
+                  box-shadow: none !important; font-family: 'Gotham Pro';">
+                  <div>
+                    <mat-icon style="font-size: 26px;">shopping_cart</mat-icon>
+
+                    <div style="display: flex; flex-direction:row; align-items: center; position: absolute;
+                    top: 10px; font-weight: bold;
+                    left: 25px;
+                    width: 17px;
+                    height: 2px;
+                    background-color: #f8af5b;
+                    border-radius: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #1d55a6;
+                    font-size: 14px;" *ngIf="basket.length > 0" class="red-indicator"> <div style="padding-left: 11px;">{{ basket.length }} </div></div>
+                  
+                    
+
+                  <b>КОРЗИНА</b></div>
+                  </button>
+                
                 
 
                 <mat-menu #category="matMenu" style="z-index: 9999;">

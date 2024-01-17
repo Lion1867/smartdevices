@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 
 import { Router, NavigationEnd } from '@angular/router';
 
+import { BasketService } from './basket.service';
+
 interface Category {
   id : number;
   name: string;
@@ -30,6 +32,7 @@ interface Product {
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, HttpClientModule, FormsModule, MatMenuModule, MatButtonModule, MatIconModule, RouterModule],
+  providers: [BasketService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -44,12 +47,14 @@ export class AppComponent {
   name = ''; 
 
   categories: Category[] = [];
+
+  basket: any[] = [];
   
   getCategoryList() {
     return this.http.get('http://127.0.0.1:8989/v1/generic/category_list');
   }
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private basketService: BasketService) {
     this.http.get('http://127.0.0.1:8989/v1/generic/product_list?limit=68').subscribe((data: any) => {
       console.log(data);
       this.products = data.results.map((productItem: Product) => ({ ...productItem, isHovering: false }));
@@ -68,6 +73,11 @@ export class AppComponent {
         this.previousUrl = event.url;
       }
     });
+
+    this.basketService.basket$.subscribe((data) => {
+      this.basket = data;
+    })
+
   }
   
   
