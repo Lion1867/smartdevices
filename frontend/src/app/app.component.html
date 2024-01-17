@@ -7,19 +7,23 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
                   
                   
                   
-                  <button (click)="scrollToTop()" mat-button style="color:#1d55a6; font-family: 'Gotham Pro';">
+                  <button class="but_1" [routerLink]="'catalog'" (click)="scrollToTop()"  style=" background-color: transparent !important; border: none;
+                  box-shadow: none !important; font-family: 'Gotham Pro';">
                     <mat-icon style="font-size: 26px;">home</mat-icon>
                     <b>ГЛАВНАЯ</b>
                   </button>
-                  <button mat-button id="searchMenuButton" style="color:#1d55a6; font-family: 'Gotham Pro'; " [matMenuTriggerFor]="category">
+                  <button class="but_1" [routerLink]="'catalog'"   style="display: none; background-color: transparent !important; border: none;
+                  box-shadow: none !important; font-family: 'Gotham Pro'; " [matMenuTriggerFor]="category">
                     <mat-icon style="font-size: 26px;">view_list</mat-icon> 
                     <b>КАТАЛОГ</b>
                   </button>
-                 <button mat-button style="color:#1d55a6; font-family: 'Gotham Pro';">
+                 <button class="but_1" style=" background-color: transparent !important; border: none;
+                 box-shadow: none !important; font-family: 'Gotham Pro';">
                   <mat-icon style="font-size: 25px;">favorite</mat-icon>
                   <b>ИЗБРАННОЕ</b>
                 </button>
-                  <button mat-button style="color:#1d55a6; font-family: 'Gotham Pro';">
+                  <button class="but_1" [routerLink]="'basket'" style=" background-color: transparent !important; border: none;
+                  box-shadow: none !important; font-family: 'Gotham Pro';">
                     <mat-icon style="font-size: 26px;">shopping_cart</mat-icon>
                     <b>КОРЗИНА</b>
                   </button>
@@ -32,7 +36,8 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
                     <button mat-menu-item style="z-index: 9999;" (click)="doFind_1(item.id)">{{ item.name }}</button>  
                   </ng-container>
                 </mat-menu>
-                <button mat-button style="color:#1d55a6; font-family: 'Gotham Pro';">
+                <button class="but_1" [routerLink]="'profile'"  style="background-color: transparent !important; border: none;
+                box-shadow: none !important; font-family: 'Gotham Pro';">
                 <mat-icon style="font-size: 26px;">account_circle</mat-icon><b>ВОЙТИ</b></button></b>
                 <div class="hamburger-menu">
                   <img class="hamburger-icon" src="/assets/images/gamburger.png" alt="Hamburger Icon">
@@ -58,62 +63,11 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
 <a class="up" href="#"><img src="/assets/images/up.jpg" alt="up"></a> 
 
 
-<div class="search-bar-container"> 
-<div><form style="margin-top: -31px; margin-left: 20px; position: fixed; z-index: 1;">
-  <div style="display: flex; flex-direction: row; ">
-    <button id="searchButton" class="searchButton" style="cursor: pointer;   display: flex; flex-direction:column; text-align: center; align-items: center; justify-content: center; height: 42px; width: 15%;
-      font-family: 'Gotham Pro';
-    color: #fff; 
-    border: none; padding-left: 20px; padding-right: 20px;
-    border-radius: 5px; " (click)="doFind()">Поиск</button>
-   <input id="finder" name="name" [(ngModel)] = "name" placeholder="Название товара" style="margin-left:1px; border-radius: 5px; border-color: rgba(78, 75, 75, 0.7); padding-left: 30px; padding-right: 385px; font-family: 'Gotham Pro'; font-size: 17px;" required/>
-  </div>
-  </form></div>
- <div style="margin-top: -24px;"><b> <a class="form439" style="margin-left: 30px;  font-family: 'Gotham Pro';   text-decoration: none;  margin-bottom: 50px;" href="https://t.me/mmolodoymma" target="_blank"><span class="form429" style="border-radius: 5px; margin-top: 50px; margin-left: 20px; margin-right: 20px; line-height: 1.8; text-align: center;  font-size: 17px;  text-decoration: none;   text-transform: uppercase;  border-color:#1d55a6; border-style: solid; border-width: 2px; padding: 7px; padding-left: 10px; padding-right: 10px;">Мы в Telegram</span></a>
-  <a class="form439" style="margin-left: 11px; font-family: 'Gotham Pro'; text-decoration: none; margin-bottom: 50px;" href="https://vk.com/mmolodoymma" target="_blank"><span class="form429" style="border-radius: 5px; margin-top: 50px; line-height: 1.8; text-align: center;  font-size: 17px;  text-decoration: none;   text-transform: uppercase;  border-color:#1d55a6; border-style: solid; border-width: 2px; padding: 7px; padding-left: 10px; padding-right: 10px;">Мы в ВКонтакте</span></a>
-  <b><span class="form103" style="margin-left: 22px;  position: relative; font-size: 27px; color:#1d55a6; "> 8 (919) 343-81-77 <br></span></b>
-</b></div>
-</div>
 
 
-<div class="slider" style="margin-top: 145px;">
-  <div class="slider-arrow left-arrow" style="z-index: 0; font-size: 50px; color:#f8af5b;">&#10094;</div>
-  <div class="slider-arrow right-arrow" style="z-index: 0; font-size: 50px; color:#f8af5b;">&#10095;</div>
-    <img style="z-index: -1;" src="/assets/images/slider_1.png" alt="Slide 1" class="slide">
-    <img style="z-index: -1;" src="/assets/images/slider_2.png" alt="Slide 2" class="slide">
-    <img style="z-index: -1;" src="/assets/images/slider_3.webp" alt="Slide 3" class="slide">
-    <img style="z-index: -1;" src="/assets/images/slider_4.png" alt="Slide 4" class="slide">
-    <img style="z-index: -1;" src="/assets/images/slider_5.png" alt="Slide 5" class="slide">
-</div>
+<router-outlet></router-outlet>
 
 
-
-
-
-  <div class="products-grid" style="margin-top: 40px; font-family: 'Gotham Pro'; margin-left: 20px; margin-right: 20px;">
-    <ng-container *ngFor="let product of products">
-      <div class="product-card">
-       
-        <h2 style="margin-left: 10px;">{{ product.name }}</h2>
-       
-
-
-        <div class="product-info">
-          <img class="product-image" [src]="product.category.get_small_image_url" [alt]="product.category.name">
-          <h3>{{ product.category.name }}</h3>
-        </div>
-        <img [src]="product.get_small_image_url" [alt]="product.name">
-        <div class="button-group">
-          <button class="clickButton" type="button">КУПИТЬ</button>
-          <button (mouseenter)="product.isHovering = true" 
-          (mouseleave)="product.isHovering = false" style="background-color: transparent !important; border: none;
-       box-shadow: none !important; margin-left: 307px; margin-top: 11px; position: absolute; color:#1d55a6; font-family: 'Gotham Pro';">
-          <mat-icon style="font-size: 19px;">{{ product.isHovering ? 'favorite' : 'favorite_border' }}</mat-icon>
-      </button>
-        </div>
-      </div>
-    </ng-container>
-  </div>
   
 <div  id="footer" style="margin-top: 50px; font-family: 'Gotham Pro'; font-size: 15px; background-color: #1e1e1e; color:rgb(255, 255, 255); grid-column: 1/3; display: flex; flex-direction: column; text-align: left; align-items: left; justify-content: left; line-height: 1.8;">
   <span id="footer_inn" style="line-height: 2.1;   text-transform: uppercase; padding-top: 65px; padding-bottom: 65px; ">
@@ -126,4 +80,5 @@ background-color: rgb(255, 255, 255); border-bottom: 5px solid #1d55a6; color: #
 <div style="background-color: #1d55a6; height: 4px;">
 </div>
 </div>
+
 
