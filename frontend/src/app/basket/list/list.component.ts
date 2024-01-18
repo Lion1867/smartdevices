@@ -1,29 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../../basket.service';
-import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+interface Category {
+  id: number;
+  name: string;
+  get_small_image_url: string;
+  products: Product[];  // Добавьте это поле
+}
+
+interface Product {
+  id: number;
+  name: string;
+  category: Category;
+  get_small_image_url: string;
+  isHovering?: boolean;
+}
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
 
-  basket  = this.basketService.getBasket();
+  basket = this.basketService.getBasket();
+  products: Product[] = [];
 
   constructor(private basketService: BasketService) { }
 
   ngOnInit() {
-    // Используем метод getBasket() вместо фиксированного массива
-    
-
-    // Если вам нужно также обновить корзину с сервера, используйте getBasketInfo
     this.basketService.getBasketInfo(this.basket).subscribe((data: any) => {
-      // Обновляем basket после получения данных с сервера
-      this.basket = data;
+      this.products = data;
     });
+  }
+
+  getProductById(productId: number): Product | undefined {
+    return this.products.find((product: Product) => product.id === productId);
   }
 }

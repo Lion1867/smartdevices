@@ -1,8 +1,23 @@
-<div style="padding-top: 500px;">
-{{ basket | json }}
+<div class="products-grid" style="margin-top: 840px; font-family: 'Gotham Pro'; margin-left: 20px; margin-right: 20px;">
+  <ng-container *ngFor="let productId of basket">
+    <div class="product-card">
+      <ng-container *ngIf="getProductById(productId) as product; else textTemplate">
+        <h2 style="margin-left: 10px;">{{ product.name }}</h2>
+        <p>Category: {{ product.category?.name }}</p>
+        <img [src]="product.get_small_image_url" [alt]="product.name">
+        <div *ngFor="let subProduct of product.category?.products">
+          <!-- Дополнительная информация о продуктах в категории -->
+        </div>
+      </ng-container>
+      <ng-template #textTemplate>
+        <p>This is not a valid product ID: {{ productId }}</p>
+      </ng-template>
+    </div>
+  </ng-container>
 </div>
+<!--
 
-<!--<div class="products-grid" style="margin-top: 40px; font-family: 'Gotham Pro'; margin-left: 20px; margin-right: 20px;">
+<div class="products-grid" style="margin-top: 40px; font-family: 'Gotham Pro'; margin-left: 20px; margin-right: 20px;">
     <ng-container *ngFor="let product of basket">
       <div class="product-card">
        
