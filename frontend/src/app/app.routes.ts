@@ -17,6 +17,10 @@ export const routes: Routes = [
     {
         path: 'catalog',
         loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule)
+    },
+    {
+        path: 'favor',
+        loadChildren: () => import('./favor/favor.module').then(m => m.FavorModule)
     }
 ];
 
