@@ -35,10 +35,13 @@ export class BasketService {
     return this._basket.indexOf(value) > -1;
   }
 
-  delFromBasket() {
-    this._basket = [];
-    this.saveToLocalStorage();
-    this.basket$.next(this._basket);
+  delFromBasket(id: number) {
+    const index = this._basket.indexOf(id);
+    if (index > -1) {
+      this._basket.splice(index, 1);
+      this.saveToLocalStorage();
+      this.basket$.next(this._basket);
+    }
   }
 
   submitBasket() {

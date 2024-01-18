@@ -60,7 +60,7 @@
         </div>
         <img [src]="product.get_small_image_url" [alt]="product.name">
         <div class="button-group">
-          <button (click)="doAddToBasket(product.id)" class="clickButton" type="button">КУПИТЬ</button>
+          <button (click)="doAddToBasket(product.id)" class="clickButton" type="button">В КОРЗИНУ</button>
           <button (mouseenter)="product.isHovering = true" 
           (mouseleave)="product.isHovering = false" style="background-color: transparent !important; border: none;
        box-shadow: none !important; margin-left: 307px; margin-top: 11px; position: absolute; font-family: 'Gotham Pro';" [style.color]="product.isHovering ? '#f8af5b' : '#1d55a6'">

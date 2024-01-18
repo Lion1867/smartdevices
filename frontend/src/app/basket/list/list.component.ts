@@ -40,4 +40,8 @@ export class ListComponent implements OnInit {
   getProductById(productId: number): Product | undefined {
     return this.products.find((product: Product) => product.id === productId);
   }
+  
+  doDelFromBasket(productId: number) {
+    this.basketService.delFromBasket(productId);
+  }
 }
