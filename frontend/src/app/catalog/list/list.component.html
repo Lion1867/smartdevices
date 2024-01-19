@@ -35,11 +35,16 @@
 <div class="slider" style="margin-top: 145px;">
   <div class="slider-arrow left-arrow" style="z-index: 0; font-size: 50px; color:#f8af5b;">&#10094;</div>
   <div class="slider-arrow right-arrow" style="z-index: 0; font-size: 50px; color:#f8af5b;">&#10095;</div>
+  <img style="z-index: -1;" src="/assets/images/slider_1.png" alt="Slide 2" class="slide_1" style="position: absolute;
+  width: 100%;
+  height: 100%;
+  ">
     <img style="z-index: -1;" src="/assets/images/slider_2.png" alt="Slide 1" class="slide">
     <img style="z-index: -1;" src="/assets/images/slider_1.png" alt="Slide 2" class="slide">
     <img style="z-index: -1;" src="/assets/images/slider_3.webp" alt="Slide 3" class="slide">
     <img style="z-index: -1;" src="/assets/images/slider_4.png" alt="Slide 4" class="slide">
     <img style="z-index: -1;" src="/assets/images/slider_5.png" alt="Slide 5" class="slide">
+    
 </div>
 
 
@@ -61,11 +66,17 @@
         <img [src]="product.get_small_image_url" [alt]="product.name">
         <div class="button-group">
           <button (click)="doAddToBasket(product.id)" class="clickButton" type="button">В КОРЗИНУ</button>
-          <button (mouseenter)="product.isHovering = true" 
-          (mouseleave)="product.isHovering = false" style="background-color: transparent !important; border: none;
-       box-shadow: none !important; margin-left: 307px; margin-top: 11px; position: absolute; font-family: 'Gotham Pro';" [style.color]="product.isHovering ? '#f8af5b' : '#1d55a6'">
-          <mat-icon style="font-size: 19px;">{{ product.isHovering ? 'favorite' : 'favorite_border' }}</mat-icon>
-      </button>
+          <button (click)="toggleFavor(product)"
+          (mouseenter)="product.isHovering = true"
+          (mouseleave)="product.isHovering = false"
+          style="background-color: transparent !important; border: none;
+                 box-shadow: none !important; margin-left: 307px; margin-top: 11px; position: absolute; font-family: 'Gotham Pro';"
+          [ngClass]="{'favorite-hover': product.isHovering, 'favorite-active': isProductInFavor(product.id)}">
+    <mat-icon style="font-size: 19px;"
+              [ngStyle]="{'color': (product.isHovering || isProductInFavor(product.id)) ? '#f8af5b' : '#1d55a6'}">
+      {{ product.isHovering || isProductInFavor(product.id) ? 'favorite' : 'favorite_border' }}
+    </mat-icon>
+  </button>
         </div>
       </div>
     </ng-container>

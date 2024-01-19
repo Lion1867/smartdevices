@@ -197,4 +197,13 @@
     }
     .form439:hover {color: #ffffff; border-color: #000000;}
 
+    @keyframes hideImage {
+      to {
+        opacity: 0;
+        display: none;
+      }
+    }
+
+    .slide_1 {animation: hideImage 1s linear 3s forwards;}
+
     
