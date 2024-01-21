@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'image_cropping',
     'django_filters',
-    'corsheaders'
+    'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
