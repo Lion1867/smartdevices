@@ -25,7 +25,10 @@ interface Product {
   id: number;
   name: string;
   category: Category;
-  get_small_image_url: string;
+  get_small_image_url: string;  
+  price: number; 
+  discount_percentage: number; 
+  discounted_price: number; 
   isHovering?: boolean;
 }
 

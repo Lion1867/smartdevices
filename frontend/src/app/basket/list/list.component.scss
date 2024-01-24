@@ -61,3 +61,41 @@
         flex-direction: row;
         justify-content: center;
       }
+
+      .price-value {
+        font-size: 21px;
+        font-weight: 700;
+        position: relative; /* Добавляем относительное позиционирование */
+      }
+      
+      .with-line::before {
+        content: '';
+        position: absolute;
+        width: 100%; /* Ширина линии на 100% от родительского контейнера */
+        height: 2px; /* Высота линии */
+        background-color: #ff6633; /* Красный цвет линии */
+        top: 50%; /* Расположение по вертикали в центре */
+        transform: translateY(-80%) rotate(-20deg); /* Наклон линии на 45 градусов */
+      }
+      
+      .regular-price {
+        text-align: right;
+        margin-right: 65px;
+      }
+  
+      .card_lab {
+        padding: 4px 9px;
+        position: absolute;
+        bottom: 25px;
+        left: 65px;
+        background: #ff6633;
+        border-radius: 4px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #fff;
+      }
+  
+    .card_top {
+    flex: 0 0 220px;
+    position: relative;
+    overflow: hidden;}

@@ -71,6 +71,9 @@ class Product(models.Model):
     name = models.CharField(max_length=250, default='')
     image = ImageCropField(upload_to='product', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    discounted_price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     cropping = ImageRatioField('image', '200x200')
 
@@ -100,7 +103,7 @@ class Product(models.Model):
 class Store(models.Model):
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    #price = models.DecimalField(max_digits=8, decimal_places=2)
     class Meta:
         verbose_name = 'Store'
         verbose_name_plural = 'Stores'

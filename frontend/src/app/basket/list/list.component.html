@@ -1,4 +1,7 @@
 <div style="color:#1d55a6; display: flex; flex-direction: row; justify-content: center; margin-top: 160px; font-family: 'Gotham Pro'; font-size: 30px;"><b style="border-radius: 10px; box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.1);">Моя корзина</b></div>
+<div class="basket-summary" style="margin-top: 20px; text-align: center; font-size: 24px; color: #414141;">
+  Общая сумма заказа: {{ getSumOrder() }} ₽
+</div>
 <div class="products-grid" style="margin-bottom: 360px; margin-top: 70px; font-family: 'Gotham Pro'; margin-left: 20px; margin-right: 20px;">
   <ng-container *ngFor="let productId of basket">
     <div class="product-card">
@@ -8,9 +11,33 @@
           <img class="product-image" [src]="product.category.get_small_image_url" [alt]="product.category.name">
           <h3>{{ product.category.name }}</h3>
         </div>
-        <img [src]="product.get_small_image_url" [alt]="product.name">
+        <div class="card_top">
+          <img  [src]="product.get_small_image_url" [alt]="product.name">
+          <div class="card_lab">-{{ getIntValue(product.discount_percentage) }}%</div>
+          </div>
+          <div style="display:grid; grid-template-columns: repeat(2, 1fr); align-self: start;"> 
+          <div style="display:flex; flex-direction: column; text-align: left; margin-left:65px; margin-top: 10px; margin-bottom: 10px;"> <b><span style="font-size: 21px; font-weight: 700; color: #252525;">{{ getIntValue(product.discounted_price) }} ₽</span ><br><span style="color: #949494; font-weight: 400;"> Со скидкой </span></b></div>
+          <div style="display:flex; flex-direction: column; text-align: right; margin-right:65px; margin-top: 10px; margin-bottom: 10px;">
+            <b>
+              <span class="price-value with-line" style="color: #414141;">{{ getIntValue(product.price) }} ₽</span>
+              <br>
+              <span style="color: #949494; font-weight: 400;"> Обычная </span>
+            </b>
+          </div>
+          </div>
 
-        <div class="button-group">
+          <div class="product-quantity" style="margin-top: 5px;">
+            <mat-form-field appearance="fill">
+              <mat-label>Количество</mat-label>
+              <mat-select [(ngModel)]="selectedQuantities[productId]">
+                <mat-option *ngFor="let quantity of quantityOptions" [value]="quantity">
+                  {{ quantity }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        <div class="button-group" style="margin-top: -15px;">
           <button (click)="doDelFromBasket(productId)" class="clickButton" type="button">УДАЛИТЬ ИЗ КОРЗИНЫ</button> </div>
 
         <div *ngFor="let subProduct of product.category?.products">
@@ -18,8 +45,10 @@
         </div>
       </ng-container>
       <ng-template #textTemplate>
-        <p>This is not a valid product ID: {{ productId }}</p>
+        <p></p>
       </ng-template>
     </div>
   </ng-container>
 </div>
+
+

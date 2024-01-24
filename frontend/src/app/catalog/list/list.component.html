@@ -57,13 +57,29 @@
        
         <h2 style="margin-left: 10px;">{{ product.name }}</h2>
        
+        
+        
 
 
         <div class="product-info">
           <img class="product-image" [src]="product.category.get_small_image_url" [alt]="product.category.name">
           <h3>{{ product.category.name }}</h3>
         </div>
-        <img [src]="product.get_small_image_url" [alt]="product.name">
+        
+        <div class="card_top">
+        <img  [src]="product.get_small_image_url" [alt]="product.name">
+        <div class="card_lab">-{{ getIntValue(product.discount_percentage) }}%</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); align-self: start;"> 
+        <div style="display:flex; flex-direction: column; text-align: left; margin-left:65px; margin-top: 10px; margin-bottom: 10px;"> <b><span style="font-size: 21px; font-weight: 700; color: #252525;">{{ getIntValue(product.discounted_price) }} ₽</span ><br><span style="color: #949494; font-weight: 400;"> Со скидкой </span></b></div>
+        <div style="display:flex; flex-direction: column; text-align: right; margin-right:65px; margin-top: 10px; margin-bottom: 10px;">
+          <b>
+            <span class="price-value with-line" style="color: #414141;">{{ getIntValue(product.price) }} ₽</span>
+            <br>
+            <span style="color: #949494; font-weight: 400;"> Обычная </span>
+          </b>
+        </div>
+        </div>
         <div class="button-group">
           <button (click)="doAddToBasket(product.id)" class="clickButton" type="button">В КОРЗИНУ</button>
           <button (click)="toggleFavor(product)"

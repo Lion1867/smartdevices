@@ -23,14 +23,14 @@ class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     class Meta:
         model = Product
-        fields = ['id', 'name', 'category', 'get_small_image_url']
+        fields = ['id', 'name', 'category', 'get_small_image_url', 'price', 'discount_percentage', 'discounted_price']
 
 class ProductSerializer_1(serializers.ModelSerializer):
     category = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'category', 'get_small_image_url']
+        fields = ['id', 'name', 'category', 'get_small_image_url', 'price', 'discount_percentage', 'discounted_price']
 
 class ProductListView(ListModelMixin,GenericAPIView):
     queryset = Product.objects.all()

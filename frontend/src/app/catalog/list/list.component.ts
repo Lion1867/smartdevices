@@ -23,6 +23,9 @@ interface Product {
   name: string;
   category: Category;
   get_small_image_url: string;
+  price: number; 
+  discount_percentage: number; 
+  discounted_price: number; 
   isHovering?: boolean;
 }
 
@@ -103,6 +106,10 @@ doFind_1(categoryId: number) {
     } else {
       this.doAddToFavor(product.id);
     }
+  }
+
+  getIntValue(value: number): number {
+    return Math.floor(value);
   }
 }
 

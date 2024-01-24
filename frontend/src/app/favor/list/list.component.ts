@@ -15,6 +15,9 @@ interface Product {
   name: string;
   category: Category;
   get_small_image_url: string;
+  price: number; 
+  discount_percentage: number; 
+  discounted_price: number; 
   isHovering?: boolean;
 }
 
@@ -49,5 +52,9 @@ export class ListComponent implements OnInit {
 
   doAddToBasket(id: number) {
     this.basketService.addToBasket(id);
+  }
+
+  getIntValue(value: number): number {
+    return Math.floor(value);
   }
 }
