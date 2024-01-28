@@ -4,10 +4,11 @@
     <div class="product-card">
       <ng-container *ngIf="getProductById(productId) as product; else textTemplate">
         <h2 style="margin-left: 10px;">{{ product.name }}</h2>
-        <div class="product-info">
+        <!-- <div class="product-info">
           <img class="product-image" [src]="product.category.get_small_image_url" [alt]="product.category.name">
           <h3>{{ product.category.name }}</h3>
-        </div>
+        </div>-->
+        <br>
         <div class="card_top">
           <img  [src]="product.get_small_image_url" [alt]="product.name">
           <div class="card_lab">-{{ getIntValue(product.discount_percentage) }}%</div>
